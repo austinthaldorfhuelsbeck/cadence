@@ -22,7 +22,7 @@
       "@/*": ["*"],
       "@core/*": ["core/*"],
       "@infrastructure/*": ["infrastructure/*"],
-      "@application/*": ["@application/*"],
+      "@application/*": ["application/*"],
       "@ui/*": ["ui/*"]
     },
     "target": "ES2017",

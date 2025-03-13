@@ -2,10 +2,12 @@ import {
     AudioPlayerService,
     FileSystemService,
     StorageService,
+    VisualizationService,
 } from '@core/interfaces';
 import { ElectronFileSystemService } from '@infrastructure/electron/ElectronFileSystemService';
 import { HowlerAudioPlayerService } from '@infrastructure/audio/HowlerAudioPlayerService';
 import { IndexedDBStorageService } from '@infrastructure/storage/IndexedDBStorageService';
+import { WebAudioVisualizationService } from './audio/WebAudioVisualizationService';
 
 /**
  * Service provider that creates and manages service instances.
@@ -17,6 +19,7 @@ export class ServiceProvider {
     private audioPlayerService: AudioPlayerService | null = null;
     private fileSystemService: FileSystemService | null = null;
     private storageService: StorageService | null = null;
+    private visualizationService: VisualizationService | null = null;
 
     private constructor() {
         // Private constructor to enforce singleton
@@ -42,6 +45,7 @@ export class ServiceProvider {
         this.fileSystemService = new ElectronFileSystemService();
         this.audioPlayerService = new HowlerAudioPlayerService();
         this.storageService = new IndexedDBStorageService();
+        this.visualizationService = new WebAudioVisualizationService();
 
         // Initialize services that require it
         await this.storageService.initialize();
@@ -78,6 +82,17 @@ export class ServiceProvider {
             this.storageService = new IndexedDBStorageService();
         }
         return this.storageService;
+    }
+
+    /**
+     * Gets the visualization service
+     * @returns VisualizationService instance
+     */
+    public getVisualizationService(): VisualizationService {
+        if (!this.visualizationService) {
+            this.visualizationService = new WebAudioVisualizationService();
+        }
+        return this.visualizationService;
     }
 
     /**
