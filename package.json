@@ -36,9 +36,13 @@
     "@types/electron": "^1.6.12",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "concurrently": "^9.1.2",
     "electon": "^0.0.1-security",
     "electron-builder": "^25.1.8",
-    "typescript": "^5.8.2"
+    "nodemon": "^3.1.9",
+    "typescript": "^5.8.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "@types/howler": "^2.2.12",

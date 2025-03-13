@@ -3,9 +3,13 @@
 ├── public
 ├── src
 │   ├── application
+│   │   ├── ApplicationContainer.ts
 │   │   ├── library
+│   │   │   └── LibraryManager.ts
 │   │   ├── playback
+│   │   │   └── PlaybackManager.ts
 │   │   └── playlist
+│   │       └── PlaylistManager.ts
 │   ├── core
 │   │   ├── dto
 │   │   │   ├── LibraryDTOs.ts
@@ -30,7 +34,9 @@
 │   ├── infrastructure
 │   │   ├── ServiceProvider.ts
 │   │   ├── audio
-│   │   │   └── HowlerAudioPlayerService.ts
+│   │   │   ├── HowlerAudioPlayerService.ts
+│   │   │   ├── MusicMetadataService.ts
+│   │   │   └── WebAudioVisualizationService.ts
 │   │   ├── electron
 │   │   │   ├── ElectronFileSystemService.ts
 │   │   │   └── FileSystemHandlers.ts
@@ -39,6 +45,7 @@
 │   ├── main.ts
 │   ├── preload.ts
 │   └── ui
+│       ├── App.tsx
 │       ├── components
 │       ├── pages
 │       └── state
