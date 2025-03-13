@@ -9,6 +9,7 @@
     "dev:webpack": "webpack --config webpack.config.js --watch",
     "dev:electron": "nodemon --watch dist/main.js --exec \"electron .\"",
     "build": "webpack --config webpack.config.js --mode production && electron-builder",
+    "tree": "tree --noreport -I \"node_modules\" > ./tree.txt",
     "test": "jest"
   },
   "repository": {
@@ -40,6 +41,8 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@types/howler": "^2.2.12",
+    "howler": "^2.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",

@@ -1,0 +1,38 @@
+.
+├── application
+│   ├── library
+│   ├── playback
+│   └── playlist
+├── core
+│   ├── dto
+│   │   ├── LibraryDTOs.ts
+│   │   └── Mappers.ts
+│   ├── interfaces
+│   │   ├── AudioPlayerService.ts
+│   │   ├── FileSystemService.ts
+│   │   ├── MetadataService.ts
+│   │   ├── StorageService.ts
+│   │   ├── VisualizationService.ts
+│   │   └── index.ts
+│   ├── models
+│   │   ├── Album.ts
+│   │   ├── Artist.ts
+│   │   ├── Library.ts
+│   │   ├── Playlist.ts
+│   │   ├── Track.ts
+│   │   └── index.ts
+│   └── types
+│       └── PlaybackTypes.ts
+├── infrastructure
+│   ├── audio
+│   ├── electron
+│   └── storage
+├── package.json
+├── public
+├── tree.txt
+├── ui
+│   ├── components
+│   ├── pages
+│   └── state
+├── utils
+└── yarn.lock
