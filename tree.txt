@@ -1,38 +1,48 @@
 .
-├── application
-│   ├── library
-│   ├── playback
-│   └── playlist
-├── core
-│   ├── dto
-│   │   ├── LibraryDTOs.ts
-│   │   └── Mappers.ts
-│   ├── interfaces
-│   │   ├── AudioPlayerService.ts
-│   │   ├── FileSystemService.ts
-│   │   ├── MetadataService.ts
-│   │   ├── StorageService.ts
-│   │   ├── VisualizationService.ts
-│   │   └── index.ts
-│   ├── models
-│   │   ├── Album.ts
-│   │   ├── Artist.ts
-│   │   ├── Library.ts
-│   │   ├── Playlist.ts
-│   │   ├── Track.ts
-│   │   └── index.ts
-│   └── types
-│       └── PlaybackTypes.ts
-├── infrastructure
-│   ├── audio
-│   ├── electron
-│   └── storage
 ├── package.json
 ├── public
+├── src
+│   ├── application
+│   │   ├── library
+│   │   ├── playback
+│   │   └── playlist
+│   ├── core
+│   │   ├── dto
+│   │   │   ├── LibraryDTOs.ts
+│   │   │   └── Mappers.ts
+│   │   ├── interfaces
+│   │   │   ├── AudioPlayerService.ts
+│   │   │   ├── FileSystemService.ts
+│   │   │   ├── MetadataService.ts
+│   │   │   ├── StorageService.ts
+│   │   │   ├── VisualizationService.ts
+│   │   │   └── index.ts
+│   │   ├── models
+│   │   │   ├── Album.ts
+│   │   │   ├── Artist.ts
+│   │   │   ├── Library.ts
+│   │   │   ├── Playlist.ts
+│   │   │   ├── Track.ts
+│   │   │   └── index.ts
+│   │   └── types
+│   │       └── PlaybackTypes.ts
+│   ├── global.d.ts
+│   ├── infrastructure
+│   │   ├── ServiceProvider.ts
+│   │   ├── audio
+│   │   │   └── HowlerAudioPlayerService.ts
+│   │   ├── electron
+│   │   │   ├── ElectronFileSystemService.ts
+│   │   │   └── FileSystemHandlers.ts
+│   │   └── storage
+│   │       └── IndexedDBStorageService.ts
+│   ├── main.ts
+│   ├── preload.ts
+│   └── ui
+│       ├── components
+│       ├── pages
+│       └── state
 ├── tree.txt
-├── ui
-│   ├── components
-│   ├── pages
-│   └── state
+├── tsconfig.json
 ├── utils
 └── yarn.lock

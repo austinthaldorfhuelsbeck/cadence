@@ -48,9 +48,20 @@ export interface FileSystemService {
     /**
      * Resolves a path relative to the application
      * @param relativePath Path relative to the application
-     * @returns Absolute path
+     * @returns Promise resolving to the absolute path
      */
-    resolvePath(relativePath: string): string;
+    resolvePath(relativePath: string): Promise<string>;
+
+    /**
+     * Scans a directory recursively for music files
+     * @param dirPath Directory to scan
+     * @param supportedExtensions Array of supported file extensions (without the dot)
+     * @returns Promise resolving to an array of music file paths
+     */
+    scanDirectoryForMusic(
+        dirPath: string,
+        supportedExtensions: string[]
+    ): Promise<string[]>;
 }
 
 /**

@@ -1,11 +1,11 @@
-import { Track, Album, Artist, Playlist, Library } from '../models';
+import { Track, Album, Artist, Playlist, Library } from '@core/models';
 import {
     TrackDTO,
     AlbumDTO,
     ArtistDTO,
     PlaylistDTO,
     LibraryStatsDTO,
-} from './LibraryDTOs';
+} from '@core/dto/LibraryDTOs';
 
 export class DTOMappers {
     static toTrackDTO(track: Track): TrackDTO {

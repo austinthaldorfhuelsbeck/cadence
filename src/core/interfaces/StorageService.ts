@@ -1,4 +1,4 @@
-import { Library, Playlist, Track, Album, Artist } from '../models';
+import { Library, Playlist, Track, Album, Artist } from '@core/models';
 
 /**
  * Interface defining data storage operations.
