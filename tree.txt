@@ -45,11 +45,29 @@
 │   ├── main.ts
 │   ├── preload.ts
 │   └── ui
+│       ├── App.css
 │       ├── App.tsx
 │       ├── components
+│       │   ├── layout
+│       │   │   ├── Layout.tsx
+│       │   │   ├── MainContent.tsx
+│       │   │   └── Sidebar.tsx
+│       │   ├── library
+│       │   │   ├── AlbumGrid.tsx
+│       │   │   ├── ArtistList.tsx
+│       │   │   ├── FileExplorer.tsx
+│       │   │   └── ViewSwitcher.tsx
+│       │   └── playback
+│       │       └── PlaybackControls.tsx
+│       ├── context
+│       │   ├── ThemeContext.tsx
+│       │   └── UIContext.tsx
+│       ├── index.html
+│       ├── index.tsx
 │       ├── pages
 │       └── state
 ├── tree.txt
 ├── tsconfig.json
 ├── utils
+├── webpack.config.js
 └── yarn.lock

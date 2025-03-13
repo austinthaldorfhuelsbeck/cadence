@@ -1,20 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+// Base configuration for all targets
+const baseConfig = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
-    entry: {
-        // Main process entry (electron)
-        main: './src/main.ts',
-        // Preload script entry
-        preload: './src/preload.ts',
-        // Renderer process entry (React)
-        renderer: './src/ui/index.tsx',
-    },
-    target: 'electron-renderer',
+
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.jsx'],
         alias: {
             '@core': path.resolve(__dirname, 'src/core'),
             '@infrastructure': path.resolve(__dirname, 'src/infrastructure'),
@@ -22,6 +15,7 @@ module.exports = {
             '@ui': path.resolve(__dirname, 'src/ui'),
         },
     },
+
     module: {
         rules: [
             {
@@ -39,19 +33,58 @@ module.exports = {
             },
         ],
     },
+
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-            filename: 'index.html',
-            chunks: ['renderer'],
-        }),
-    ],
+};
+
+// Main process config (Node.js environment)
+const mainConfig = {
+    ...baseConfig,
+    target: 'electron-main',
+    entry: {
+        main: './src/main.ts',
+    },
+    // Node.js polyfills are not needed for the main process
     node: {
         __dirname: false,
         __filename: false,
     },
+    // Don't bundle native Node.js modules
+    externals: {
+        electron: 'commonjs electron',
+    },
 };
+
+// Preload script config
+const preloadConfig = {
+    ...baseConfig,
+    target: 'electron-preload',
+    entry: {
+        preload: './src/preload.ts',
+    },
+    // Don't bundle native Node.js modules
+    externals: {
+        electron: 'commonjs electron',
+    },
+};
+
+// Renderer process config (Browser environment)
+const rendererConfig = {
+    ...baseConfig,
+    target: 'electron-renderer',
+    entry: {
+        renderer: './src/ui/index.tsx',
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public/index.html'),
+            filename: 'index.html',
+            chunks: ['renderer'],
+        }),
+    ],
+};
+
+module.exports = [mainConfig, preloadConfig, rendererConfig];

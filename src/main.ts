@@ -1,14 +1,6 @@
 import { app, BrowserWindow, dialog, Menu, shell } from 'electron';
 import * as path from 'path';
-import * as fs from 'fs';
-import * as util from 'util';
 import { registerFileSystemHandlers } from '@infrastructure/electron/FileSystemHandlers';
-
-// Convert fs methods to promises
-const readdir = util.promisify(fs.readdir);
-const stat = util.promisify(fs.stat);
-const readFile = util.promisify(fs.readFile);
-const exists = util.promisify(fs.exists);
 
 // Type definitions
 interface AppConfig {
@@ -59,12 +51,9 @@ function createWindow(): void {
         },
     });
 
-    // Load the index.html (or localhost in dev mode)
-    if (process.env.NODE_ENV === 'development') {
-        mainWindow.loadURL('http://localhost:3000');
-    } else {
-        mainWindow.loadFile(path.join(__dirname, 'index.html'));
-    }
+    // Load the index.html from the dist directory
+    const indexPath = path.join(__dirname, 'index.html');
+    mainWindow.loadFile(indexPath);
 
     // Open dev tools if in development
     if (config.devTools) {
