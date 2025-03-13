@@ -1,0 +1,49 @@
+{
+  "name": "cadence",
+  "version": "0.1.0",
+  "description": "A modern music player for macOS",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm run dev:webpack\" \"npm run dev:electron\"",
+    "dev:webpack": "webpack --config webpack.config.js --watch",
+    "dev:electron": "nodemon --watch dist/main.js --exec \"electron .\"",
+    "build": "webpack --config webpack.config.js --mode production && electron-builder",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinthaldorfhuelsbeck/cadence.git"
+  },
+  "author": "Austin Thaldorf-Huelsbeck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/austinthaldorfhuelsbeck/cadence/issues"
+  },
+  "homepage": "https://github.com/austinthaldorfhuelsbeck/cadence#readme",
+  "build": {
+    "appId": "com.balustrade.cadence",
+    "mac": {
+      "category": "public.app-category.music"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ]
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.12",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "electon": "^0.0.1-security",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.3.0",
+    "redux": "^5.0.1"
+  }
+}
